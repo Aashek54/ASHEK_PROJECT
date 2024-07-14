@@ -33,3 +33,18 @@ def cities_menu():
     print("4. Print neighboring cities")
     print("5. Print drivers delivering to a city")
     print("6. Go back to the main menu")
+
+
+    while True:
+        main_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            driver_id_counter = handle_drivers_menu(drivers, driver_id_counter, cities)
+        elif choice == "2":
+            handle_cities_menu(drivers, cities)
+        elif choice == "3":
+            print("Exiting the system. Goodbye!")
+            break
+        else:
+            print("Invalid choice, please try again.")
