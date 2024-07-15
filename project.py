@@ -48,3 +48,23 @@ def cities_menu():
             break
         else:
             print("Invalid choice, please try again.")
+
+
+def handle_drivers_menu(drivers, driver_id_counter, cities):
+    while True:
+        drivers_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            driver_id_counter = add_driver(drivers, driver_id_counter, cities)
+        elif choice == "2":
+            view_drivers(drivers)
+        elif choice == "3":
+            search_driver(drivers)
+        elif choice == "4":
+            add_delivery_city_for_driver(drivers, cities)
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice, please try again.")
+    return driver_id_counter
