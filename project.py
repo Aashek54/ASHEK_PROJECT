@@ -134,3 +134,13 @@ def view_drivers(drivers):
         for driver_id, driver in drivers.items():
             print("Driver ID: " + str(driver_id) + ", Name: " + driver.name + ", Start City: " + driver.start_city)
             print("Delivery Cities: " + ", ".join(driver.delivery_cities))
+
+
+def search_driver(drivers):
+    worker_id = int(input("Enter worker ID to search: "))
+    driver = drivers.get(worker_id)
+    if driver:
+        print("Driver ID: " + str(driver.worker_id) + ", Name: " + driver.name + ", Start City: " + driver.start_city)
+        print("Delivery Cities: " + ", ".join(driver.delivery_cities))
+    else:
+        print("Driver not found.")
