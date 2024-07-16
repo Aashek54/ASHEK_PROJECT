@@ -11,13 +11,13 @@ class City:
 
 def main_menu():
     print("\nHello! Please enter:")
-    print("1. To go to the drivers' menu")
-    print("2. To go to the cities' menu")
+    print("1. To go to the drivers menu")
+    print("2. To go to the cities menu")
     print("3. To exit the system")
 
 
 def drivers_menu():
-    print("\nDrivers' Menu:")
+    print("\nDrivers Menu:")
     print("1. Add a driver")
     print("2. View all drivers")
     print("3. Search for a driver by ID")
@@ -26,13 +26,37 @@ def drivers_menu():
 
 
 def cities_menu():
-    print("\nCities' Menu:")
+    print("\nCities Menu:")
     print("1. Add a city")
     print("2. Add a connection between cities")
     print("3. View all cities and their connections")
     print("4. Print neighboring cities")
     print("5. Print drivers delivering to a city")
     print("6. Go back to the main menu")
+
+def main():
+    drivers = {
+        1: Driver(1, "Ali Achkar", "Mansourieh"),
+        2: Driver(2, "Ahmad Azzam", "Beirut"),
+        3: Driver(3, "Joe Assaf", "Zalka"),
+        4: Driver(4, "Joe Bassam abdlrahman", "Akkar"),
+        5: Driver(5, "Mhamad Delbani", "Beirut"),
+        6: Driver(6, "Yassine Atwi", "Saida"),
+        7:Driver(7,"Hsein saker","Dahieh"),
+        8:Driver(8,"Hassan Kanso","")
+    }
+
+    cities = {
+        "BEIRUT": City("BEIRUT"),
+        "ZALKA": City("ZALKA"),
+        "MANSOURIEH": City("MANSOURIEH"),
+        "TRIPOLI": City("TRIPOLI"),
+        "SAIDA":City("SAIDA"),
+        "AKKAR":City("AKKAR"),
+        "Dahieh":City("Dahieh")
+    }
+
+    driver_id_counter = len(drivers) + 1  
 
 
     while True:
