@@ -125,3 +125,12 @@ def add_driver(drivers, driver_id_counter, cities):
     drivers[driver_id_counter] = Driver(driver_id_counter, name, start_city)
     print("Driver added successfully!")
     return driver_id_counter + 1
+
+def view_drivers(drivers):
+    if not drivers:
+        print("No drivers available.")
+    else:
+        print("List of drivers:")
+        for driver_id, driver in drivers.items():
+            print("Driver ID: " + str(driver_id) + ", Name: " + driver.name + ", Start City: " + driver.start_city)
+            print("Delivery Cities: " + ", ".join(driver.delivery_cities))
