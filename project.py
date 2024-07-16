@@ -113,3 +113,15 @@ def handle_cities_menu(drivers, cities):
             break
         else:
             print("Invalid choice, please try again.")
+
+def add_driver(drivers, driver_id_counter, cities):
+    name = input("Enter name: ")
+    start_city = input("Enter start city: ").upper()
+
+    if start_city not in cities:
+        print("City does not exist.")
+        return driver_id_counter
+
+    drivers[driver_id_counter] = Driver(driver_id_counter, name, start_city)
+    print("Driver added successfully!")
+    return driver_id_counter + 1
