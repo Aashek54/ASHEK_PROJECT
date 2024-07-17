@@ -43,7 +43,7 @@ def main():
         5: Driver(5, "Mhamad Delbani", "Beirut"),
         6: Driver(6, "Yassine Atwi", "Saida"),
         7:Driver(7,"Hsein saker","Dahieh"),
-        8:Driver(8,"Hassan Kanso","")
+        8:Driver(8,"Hassan Kanso","Khaldeh")
     }
 
     cities = {
@@ -53,7 +53,8 @@ def main():
         "TRIPOLI": City("TRIPOLI"),
         "SAIDA":City("SAIDA"),
         "AKKAR":City("AKKAR"),
-        "Dahieh":City("Dahieh")
+        "Dahieh":City("Dahieh"),
+        "Khaldeh":City("Khaldeh")
     }
 
     driver_id_counter = len(drivers) + 1  
@@ -144,3 +145,11 @@ def search_driver(drivers):
         print("Delivery Cities: " + ", ".join(driver.delivery_cities))
     else:
         print("Driver not found.")
+
+def add_city(cities):
+    name = input("Enter city name: ").upper()
+    if name in cities:
+        print("City already exists.")
+    else:
+        cities[name] = City(name)
+        print("City added successfully!")
