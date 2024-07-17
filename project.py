@@ -153,3 +153,15 @@ def add_city(cities):
     else:
         cities[name] = City(name)
         print("City added successfully!")
+
+def add_city_connection(cities):
+    city1 = input("Enter the first city name: ").upper()
+    city2 = input("Enter the second city name: ").upper()
+
+    if city1 not in cities or city2 not in cities:
+        print("One or both cities do not exist.")
+        return
+
+    cities[city1].add_connection(cities[city2])
+    cities[city2].add_connection(cities[city1])
+    print("Connection added successfully!")
