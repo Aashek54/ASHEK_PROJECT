@@ -3,11 +3,25 @@ class Driver:
         self.worker_id = worker_id
         self.name = name
         self.start_city = start_city
+        self.delivery_cities = [start_city]
+
+    def add_delivery_city(self, city_name): #
+        if city_name not in self.delivery_cities:
+            self.delivery_cities.append(city_name)
+
 
 class City:
     def __init__(self, name):
         self.name = name
         self.connections = []
+
+    def add_connection(self, city): #
+        if city not in self.connections:
+            self.connections.append(city)
+            print("Connection added between " + self.name + " and " + city.name + ".")
+        else:
+            print("Connection between " + self.name + " and " + city.name + " already exists.")
+
 
 def main_menu():
     print("\nHello! Please enter:")
@@ -34,6 +48,7 @@ def cities_menu():
     print("5. Print drivers delivering to a city")
     print("6. Go back to the main menu")
 
+
 def main():
     drivers = {
         1: Driver(1, "Ali Achkar", "Mansourieh"),
@@ -58,7 +73,6 @@ def main():
     }
 
     driver_id_counter = len(drivers) + 1  
-
 
     while True:
         main_menu()
@@ -115,6 +129,7 @@ def handle_cities_menu(drivers, cities):
         else:
             print("Invalid choice, please try again.")
 
+
 def add_driver(drivers, driver_id_counter, cities):
     name = input("Enter name: ")
     start_city = input("Enter start city: ").upper()
@@ -126,6 +141,7 @@ def add_driver(drivers, driver_id_counter, cities):
     drivers[driver_id_counter] = Driver(driver_id_counter, name, start_city)
     print("Driver added successfully!")
     return driver_id_counter + 1
+
 
 def view_drivers(drivers):
     if not drivers:
@@ -146,6 +162,7 @@ def search_driver(drivers):
     else:
         print("Driver not found.")
 
+
 def add_city(cities):
     name = input("Enter city name: ").upper()
     if name in cities:
@@ -154,6 +171,7 @@ def add_city(cities):
         cities[name] = City(name)
         print("City added successfully!")
 
+
 def add_city_connection(cities):
     city1 = input("Enter the first city name: ").upper()
     city2 = input("Enter the second city name: ").upper()
@@ -161,7 +179,24 @@ def add_city_connection(cities):
     if city1 not in cities or city2 not in cities:
         print("One or both cities do not exist.")
         return
-    
+
+    cities[city1].add_connection(cities[city2])
+    cities[city2].add_connection(cities[city1])
+    print("Connection added successfully!")
+
+
+def view_cities(cities):
+    if not cities:
+        print("No cities available.")
+    else:
+        print("List of cities and their connections:")
+        for city_name, city in cities.items():
+            connections = []
+            for c in city.connections:
+                connections.append(c.name)
+            print("City: " + city_name + ", Connections: " + ", ".join(connections))
+
+
 def print_neighboring_cities(cities):
     city_name = input("Enter the city name: ").upper()
     if city_name not in cities:
@@ -208,21 +243,3 @@ def add_delivery_city_for_driver(drivers, cities):
 
 if __name__ == "__main__":
     main()
-
-
-    cities[city1].add_connection(cities[city2])
-    cities[city2].add_connection(cities[city1])
-    print("Connection added successfully!")
-
-
-def view_cities(cities):
-    if not cities:
-        print("No cities available.")
-    else:
-        print("List of cities and their connections:")
-        for city_name, city in cities.items():
-            connections = []
-            for c in city.connections:
-                connections.append(c.name)
-            print("City: " + city_name + ", Connections: " + ", ".join(connections))
-
