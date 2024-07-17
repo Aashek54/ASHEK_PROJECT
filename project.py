@@ -165,3 +165,16 @@ def add_city_connection(cities):
     cities[city1].add_connection(cities[city2])
     cities[city2].add_connection(cities[city1])
     print("Connection added successfully!")
+
+
+def view_cities(cities):
+    if not cities:
+        print("No cities available.")
+    else:
+        print("List of cities and their connections:")
+        for city_name, city in cities.items():
+            connections = []
+            for c in city.connections:
+                connections.append(c.name)
+            print("City: " + city_name + ", Connections: " + ", ".join(connections))
+
